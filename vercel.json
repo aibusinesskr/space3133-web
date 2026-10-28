@@ -1,0 +1,1 @@
+{ "cleanUrls": true, "redirects": [ { "source": "/:path*", "has": [{ "type": "host", "value": "space3133.com" }], "destination": "https://www.space3133.com/:path*", "permanent": true } ] }

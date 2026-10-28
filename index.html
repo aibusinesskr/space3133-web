@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="SPACE 3133">
+<meta property="og:description" content="전통의 거리에서, 기술의 주인이 되다 — 인사동 AI × 전통 공간">
+<meta property="og:url" content="https://www.space3133.com">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23B8321F'/%3E%3Ctext x='32' y='30' font-family='Arial' font-weight='700' font-size='22' fill='%23fff' text-anchor='middle'%3E31%3C/text%3E%3Ctext x='32' y='54' font-family='Arial' font-weight='700' font-size='22' fill='%23fff' text-anchor='middle'%3E33%3C/text%3E%3C/svg%3E">
+<title>SPACE 3133</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="1919년 3월 1일, 서른세 사람이 선언서를 읽은 인사동에서 AI와 전통을 잇는 공간, 스페이스 3133.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Noto+Serif+KR:wght@600;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: 낙관 도장이 찍힌 한지 문서처럼 — 먹색 띠(선언)와 한지 면(안내)이 번갈아 내려가는 세로 두루마리 */
+:root{
+  --paper:#F3EFE6; --paper-2:#FBF9F4; --ink:#171717; --ink-soft:#57524A;
+  --line:#DCD5C6; --seal:#B8321F; --seal-ink:#FFFFFF; --jjok:#24305E;
+  --band:#171717; --band-fg:#F3EFE6; --band-soft:#BDB6A8; --band-line:#3B3833;
+  --card:#FFFFFF;
+  --f-display:"Noto Serif KR","Nanum Myeongjo",serif;
+  --f-body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-latin:"Space Grotesk","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#141312; --paper-2:#1B1A18; --ink:#EEE9DF; --ink-soft:#ADA699;
+  --line:#34312C; --seal:#C9452F; --seal-ink:#FFFFFF; --jjok:#8E9BD0;
+  --band:#0B0B0A; --band-fg:#EEE9DF; --band-soft:#A39C8F; --band-line:#2E2C28;
+  --card:#1E1C1A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#141312; --paper-2:#1B1A18; --ink:#EEE9DF; --ink-soft:#ADA699;
+  --line:#34312C; --seal:#C9452F; --seal-ink:#FFFFFF; --jjok:#8E9BD0;
+  --band:#0B0B0A; --band-fg:#EEE9DF; --band-soft:#A39C8F; --band-line:#2E2C28;
+  --card:#1E1C1A; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px;border-radius:4px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.latin{font-family:var(--f-latin)}
+.eyebrow{font-family:var(--f-latin);font-weight:500;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--seal)}
+.btn{display:inline-flex;align-items:center;gap:.5em;min-height:48px;padding:0 24px;border-radius:999px;font-weight:700;text-decoration:none;border:1px solid transparent;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-seal{background:var(--seal);color:var(--seal-ink)}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border-color:currentColor}
+
+/* seal */
+.seal{display:grid;grid-template-columns:1fr 1fr;align-items:center;justify-items:center;background:var(--seal);color:var(--seal-ink);font-family:var(--f-latin);font-weight:700;line-height:1}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .seal{width:38px;height:38px;padding:4px;border-radius:5px;font-size:14px}
+.brand b{font-family:var(--f-latin);font-size:1.15rem;letter-spacing:.06em}
+.menu{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;font-size:.95rem}
+.menu a{text-decoration:none;color:var(--ink-soft)}
+.menu a:hover{color:var(--ink)}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{font:600 .8rem var(--f-latin);letter-spacing:.08em;padding:6px 12px;min-height:36px;border:0;background:transparent;color:var(--ink-soft);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+@media (max-width:760px){.menu .m-hide{display:none}}
+
+/* hero */
+.hero{background:var(--band);color:var(--band-fg);overflow:hidden}
+.hero .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:48px;padding-block:88px 96px}
+.hero-copy{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:26px}
+.hero .eyebrow{color:#D9B8A8}
+.hero h1{font-family:var(--f-display);font-weight:900;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.2;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--seal);filter:brightness(1.25)}
+.hero p.lead{font-size:clamp(1.02rem,1.6vw,1.18rem);color:var(--band-soft);max-width:36em}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero .btn-line{color:var(--band-fg)}
+.hero .meta{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:.88rem;color:var(--band-soft)}
+.hero-seal{flex:1 1 260px;display:flex;justify-content:center}
+.hero-seal .seal{width:min(300px,70vw);aspect-ratio:1;max-width:100%;padding:8.5%;border-radius:10%;font-size:clamp(80px,11vw,118px);box-shadow:inset 0 0 0 13px var(--seal),inset 0 0 0 17px var(--band);transform:rotate(-4deg);animation:stamp .9s cubic-bezier(.2,.9,.25,1.2) .2s both}
+@keyframes stamp{from{transform:rotate(0) scale(1.12)}to{transform:rotate(-4deg) scale(1)}}
+@media (prefers-reduced-motion:reduce){.hero-seal .seal{animation:none}.btn{transition:none}}
+
+/* sections */
+section.block{padding-block:96px}
+.head{display:flex;flex-direction:column;gap:12px;max-width:40em;margin-bottom:48px}
+.head h2{font-family:var(--f-display);font-weight:700;font-size:clamp(1.8rem,3.6vw,2.7rem);line-height:1.3}
+.head p{color:var(--ink-soft)}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px}
+.why article{border-top:2px solid var(--ink);padding-top:24px;display:flex;flex-direction:column;gap:10px}
+.why .num{font-family:var(--f-latin);font-weight:700;font-size:clamp(3.4rem,6vw,4.6rem);line-height:1;color:var(--seal);letter-spacing:-.02em}
+.why h3{font-size:1.15rem}
+.why p{color:var(--ink-soft)}
+
+/* floors */
+.floors-sec{background:var(--paper-2);border-block:1px solid var(--line)}
+.loc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px;align-items:start}
+.loc-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:32px;display:flex;flex-direction:column;gap:20px;min-width:0}
+.loc-card.soon{background:transparent;border-style:dashed}
+.loc-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px}
+.tag{font:700 .72rem var(--f-latin);letter-spacing:.16em;padding:5px 10px;border-radius:4px;background:var(--seal);color:var(--seal-ink)}
+.tag.jjok{background:var(--jjok);color:var(--paper)}
+.url{font-family:var(--f-latin);font-size:.9rem;color:var(--ink-soft);word-break:break-all}
+.loc-card h3{font-family:var(--f-display);font-size:1.9rem}
+.floors{list-style:none;margin:0;padding:0}
+.floors li{display:grid;grid-template-columns:84px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.floors li:last-child{border-bottom:1px solid var(--line)}
+.floors .fl{font:700 .95rem var(--f-latin);letter-spacing:.04em}
+.floors .nm{font-weight:700;display:block}
+.floors .ds{color:var(--ink-soft);font-size:.93rem}
+
+/* programs */
+.ladder{background:var(--jjok);color:var(--paper);border-radius:12px;padding:clamp(28px,4vw,48px);display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between;margin-bottom:24px}
+:root[data-theme="dark"] .ladder{color:#10131F}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .ladder{color:#10131F}}
+.ladder-copy{flex:999 1 480px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.ladder .k{font:500 .8rem var(--f-latin);letter-spacing:.16em;opacity:.85}
+.ladder h3{font-family:var(--f-display);font-size:clamp(1.6rem,3vw,2.1rem)}
+.steps{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.92rem}
+.steps li{border:1px solid currentColor;border-radius:999px;padding:4px 14px;opacity:.95}
+.steps .arr{border:0;padding:0;opacity:.7}
+.ladder .btn{background:var(--paper);color:var(--ink)}
+.progs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:20px}
+.prog{border:1px solid var(--line);border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:10px;background:var(--card)}
+.prog .k{font:500 .78rem var(--f-latin);letter-spacing:.16em;color:var(--ink-soft)}
+.prog h3{font-size:1.2rem}
+.prog p{color:var(--ink-soft);font-size:.95rem}
+
+/* declaration */
+.decl{background:var(--band);color:var(--band-fg)}
+.decl .wrap{display:flex;flex-wrap:wrap;gap:56px;padding-block:104px}
+.decl-main{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:28px}
+.decl .eyebrow{color:#D9B8A8}
+.decl blockquote{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(1.45rem,2.8vw,2.15rem);line-height:1.6}
+.decl cite{font-style:normal;color:var(--band-soft);font-size:.92rem}
+.vows{flex:1 1 300px;display:flex;flex-direction:column;gap:0}
+.vows h3{font-size:1rem;margin-bottom:12px}
+.vow{border-top:1px solid var(--band-line);padding-block:14px}
+.vow b{display:block}
+.vow span{color:var(--band-soft);font-size:.95rem}
+.signers{display:grid;grid-template-columns:repeat(11,1fr);gap:6px;margin-top:22px;max-width:360px}
+.signers i{aspect-ratio:1;border:1px solid var(--band-line);border-radius:3px}
+.signers i.on{background:var(--seal);border-color:var(--seal)}
+.decl .small{font-size:.85rem;color:var(--band-soft);margin-top:10px}
+
+/* contact */
+.contact{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-end}
+.contact-l{flex:999 1 460px;min-width:0;display:flex;flex-direction:column;gap:18px}
+.contact-l h2{font-family:var(--f-display);font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.35}
+form{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:6px;flex:1 1 240px}
+label{font-size:.88rem;color:var(--ink-soft)}
+input,select{min-height:48px;padding:0 16px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit}
+button.submit{min-height:48px;padding:0 26px;border:0;border-radius:999px;background:var(--ink);color:var(--paper);font:700 1rem var(--f-body);cursor:pointer}
+.msg{font-size:.92rem;color:var(--seal);min-height:1.5em}
+.contact-r{flex:1 1 260px;display:flex;flex-direction:column;gap:6px;font-size:.95rem}
+.contact-r .muted{color:var(--ink-soft)}
+
+footer{border-top:1px solid var(--ink)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;padding-block:32px;font-size:.88rem;color:var(--ink-soft)}
+footer b{font-family:var(--f-latin);color:var(--ink);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="SPACE 3133 처음으로">
+      <span class="seal" aria-hidden="true"><span>3</span><span>1</span><span>3</span><span>3</span></span>
+      <b>SPACE 3133</b>
+    </a>
+    <nav class="menu" aria-label="주 메뉴">
+      <a class="m-hide" href="#why" data-en="Our Name">3133 이야기</a>
+      <a href="#locations" data-en="Locations">지점</a>
+      <a href="#programs" data-en="Programs">프로그램</a>
+      <a class="m-hide" href="#declaration" data-en="Declaration">AI 독립선언</a>
+      <div class="lang" role="group" aria-label="언어 선택">
+        <button type="button" id="lang-ko" aria-pressed="true">KO</button>
+        <button type="button" id="lang-en" aria-pressed="false">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow">Insadong, Seoul · Since 1919 · AI × Tradition</div>
+        <h1 data-en="Where tradition lives,<br>we become <em>masters</em> of technology">전통의 거리에서,<br>기술의 <em>주인</em>이 되다</h1>
+        <p class="lead" data-en="Insadong is the street where 33 people read the Declaration of Independence on March 1, 1919. SPACE 3133 records Korean food, clothing and living with AI and robots, and teaches anyone to use technology with their own hands.">1919년 3월 1일, 서른세 사람이 선언서를 읽은 인사동. 스페이스 3133은 그 거리에서 우리의 의·식·주를 AI와 로봇으로 기록하고, 누구나 기술을 직접 다루는 법을 배우는 곳입니다.</p>
+        <div class="actions">
+          <a class="btn btn-seal" href="https://insa.space3133.com" data-en="Visit Insadong →">인사동점 둘러보기 →</a>
+          <a class="btn btn-line" href="#programs" data-en="AI classes start Dec 1">AI 교육 12월 1일 개강</a>
+        </div>
+        <div class="meta">
+          <span data-en="5 Insadong 10-gil, Jongno-gu, Seoul">서울 종로구 인사동10길 5</span>
+          <span data-en="Opening November 2026">2026년 11월 오픈</span>
+        </div>
+      </div>
+      <div class="hero-seal">
+        <div class="seal" role="img" aria-label="SPACE 3133 도장"><span>3</span><span>1</span><span>3</span><span>3</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="why">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Why 3133</div>
+        <h2 data-en="Our name is our promise">이름이 곧 약속입니다</h2>
+      </div>
+      <div class="why">
+        <article>
+          <div class="num">3·1</div>
+          <h3 data-en="The day of declaration">선언의 날</h3>
+          <p data-en="March 1, 1919. We carry the day people declared the right to think and decide for themselves.">1919년 3월 1일. 스스로 생각하고 정할 권리를 선언한 날을 이름에 새겼습니다.</p>
+        </article>
+        <article>
+          <div class="num">33</div>
+          <h3 data-en="Thirty-three signers">서명인 33인</h3>
+          <p data-en="Like the 33 of 1919, we are gathering 33 people to sign the AI Declaration here on March 1, 2027.">그날의 33인처럼, 2027년 3월 1일 이곳에서 AI 독립선언에 이름을 올릴 33인을 모읍니다.</p>
+        </article>
+        <article>
+          <div class="num">B1→RF</div>
+          <h3 data-en="From the bunker to the rooftop">벙커에서 루프탑까지</h3>
+          <p data-en="We build underground and you experience it above. Only what works climbs the stairs.">벙커에서 만들고 지상에서 경험합니다. 작동하는 것만 계단을 올라갑니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block floors-sec" id="locations">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Locations</div>
+        <h2 data-en="It starts with one street, one building">한 거리, 한 건물에서 시작합니다</h2>
+      </div>
+      <div class="loc">
+        <article class="loc-card">
+          <div class="loc-top"><span class="tag">OPEN 2026.11</span><span class="url">insa.space3133.com</span></div>
+          <h3 data-en="Insadong">인사동점</h3>
+          <ul class="floors">
+            <li><span class="fl">ROOF</span><span><span class="nm" data-en="Rooftop">루프탑</span><span class="ds" data-en="Opens spring 2027">2027년 봄 공개</span></span></li>
+            <li><span class="fl">3F</span><span><span class="nm" data-en="The Floor That Reads You">나를 읽어주는 층</span><span class="ds" data-en="AI saju, compatibility &amp; face reading, AI personal color, photo booth">AI 사주·궁합·관상, AI 퍼스널컬러, 포토부스</span></span></li>
+            <li><span class="fl">2F</span><span><span class="nm" data-en="Tradition Studio">전통 체험 스튜디오</span><span class="ds" data-en="Tea ceremony and traditional liquor classes">다도·전통주 클래스</span></span></li>
+            <li><span class="fl">B1</span><span><span class="nm">AI 벙커 3133</span><span class="ds" data-en="AI education, robot lab, community">AI 교육·로봇 개발·커뮤니티</span></span></li>
+          </ul>
+          <a class="btn btn-ink" href="https://insa.space3133.com" style="align-self:flex-start" data-en="Go to Insadong →">인사동점 바로가기 →</a>
+        </article>
+        <article class="loc-card soon">
+          <div class="loc-top"><span class="tag jjok">COMING SOON</span><span class="url">[지점].space3133.com</span></div>
+          <h3 data-en="Next location">다음 지점</h3>
+          <p style="color:var(--ink-soft)" data-en="We are preparing the next street. Leave your email below to hear first.">다음 거리를 준비하고 있습니다. 아래에 이메일을 남기시면 가장 먼저 알려드립니다.</p>
+          <a class="btn btn-line" href="#contact" style="align-self:flex-start" data-en="Get opening news">오픈 소식 받기</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="programs">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Programs</div>
+        <h2 data-en="Learn, experience, and build together">배우고, 체험하고, 함께 만듭니다</h2>
+      </div>
+      <article class="ladder">
+        <div class="ladder-copy">
+          <div class="k" data-en="B1 · AI BUNKER 3133 · ALL COURSES START DEC 1, 2026">B1 · AI 벙커 3133 · 2026.12.01 전 과정 개강</div>
+          <h3 data-en="The AI Learning Ladder">AI 교육 사다리</h3>
+          <p data-en="From learner to practitioner. Weeknight and weekend courses for working professionals and business owners.">배우는 사람에서 일하는 사람으로. 평일 저녁과 주말, 재직자와 사장님을 위한 과정입니다.</p>
+          <ol class="steps">
+            <li data-en="One-day">원데이 체험</li><li class="arr" aria-hidden="true">→</li>
+            <li data-en="L1 Basics">L1 기초반</li><li class="arr" aria-hidden="true">→</li>
+            <li>L2 AI Builder · Physical AI</li><li class="arr" aria-hidden="true">→</li>
+            <li data-en="L3 AI PM · AX Consultant">L3 AI PM · AX 컨설턴트</li>
+          </ol>
+        </div>
+        <a class="btn" href="https://insa.space3133.com/bunker" data-en="See courses &amp; apply →">과정 보고 신청하기 →</a>
+      </article>
+      <div class="progs">
+        <article class="prog">
+          <div class="k">3F · EXPERIENCE</div>
+          <h3 data-en="AI Saju &amp; Face Reading">AI 사주·궁합·관상</h3>
+          <p data-en="A cultural experience explained in Korean, English, Chinese and Japanese. Take your result card home.">한국어·영어·중국어·일본어로 풀어주는 문화 체험. 결과 카드를 가져가세요.</p>
+        </article>
+        <article class="prog">
+          <div class="k">2F · CLASS</div>
+          <h3 data-en="Tea &amp; Traditional Liquor">다도·전통주 클래스</h3>
+          <p data-en="Small reservation-only classes. Korean food culture through tea and makgeolli.">예약제 소규모 클래스. 차와 술로 만나는 우리 식(食)의 이야기.</p>
+        </article>
+        <article class="prog">
+          <div class="k">B2B · TEAM</div>
+          <h3 data-en="Corporate Team Programs">기업 팀빌딩·위탁 교육</h3>
+          <p data-en="A one-day program combining an AX workshop, tea ceremony and AI saju, plus in-house AI courses.">AX 워크숍, 다도, AI 사주를 묶은 하루 프로그램과 임직원 정규과정.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="decl" id="declaration">
+    <div class="wrap">
+      <div class="decl-main">
+        <div class="eyebrow">AI Declaration of Independence</div>
+        <blockquote data-en="We hereby declare that in the age of thinking and moving machines, people are the masters, and every ordinary person is sovereign over technology.">우리는 이에, 생각하는 기계와 움직이는 기계의 시대에 사람이 주인임과, 평범한 사람 누구나 기술의 자주민(自主民)임을 선언하노라.</blockquote>
+        <cite data-en="SPACE 3133 AI Declaration · to be read on March 1, 2027 (Dangi 4360)">스페이스 3133 AI 독립선언서 · 단기 4360년(2027년) 3월 1일 낭독 예정</cite>
+        <div>
+          <div class="signers" id="signers" aria-hidden="true"></div>
+          <p class="small" data-en="33 seats for signers. Join the waiting list.">서명인 33석 · 대기 명단을 받고 있습니다.</p>
+        </div>
+      </div>
+      <div class="vows">
+        <h3 data-en="Three Pledges">공약 3장</h3>
+        <div class="vow"><b data-en="For people">하나, 사람을 위하여</b><span data-en="Technology is never used to replace or exclude people.">기술은 사람을 대체·배제하는 데 쓰지 않는다.</span></div>
+        <div class="vow"><b data-en="To the last person">둘, 마지막 한 사람까지</b><span data-en="What we learn, we teach. What we build, we share.">배운 것은 가르치고, 만든 것은 공개한다.</span></div>
+        <div class="vow"><b data-en="Openly and rightly">셋, 밝고 바르게</b><span data-en="People explain and take responsibility for what machines do.">기계가 한 일은 사람이 설명하고 책임진다.</span></div>
+        <a class="btn btn-seal" href="#contact" style="align-self:flex-start;margin-top:20px" data-en="Join the signer waitlist">서명인 대기 명단 등록</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap contact">
+      <div class="contact-l">
+        <div class="eyebrow">Stay in touch</div>
+        <h2 data-en="Be the first to hear about openings and new classes">오픈 소식과 개강 안내를 가장 먼저</h2>
+        <form id="notify" novalidate>
+          <div class="field">
+            <label for="email" data-en="Email">이메일</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field" style="flex:0 1 220px">
+            <label for="interest" data-en="Interested in">관심 분야</label>
+            <select id="interest" name="interest">
+              <option value="edu" data-en="AI classes (B1)">AI 교육 (B1)</option>
+              <option value="exp" data-en="Experiences (2F·3F)">체험 (2F·3F)</option>
+              <option value="signer" data-en="Signer waitlist">서명인 대기 명단</option>
+              <option value="b2b" data-en="Corporate / partnership">기업·제휴</option>
+            </select>
+          </div>
+          <button class="submit" type="submit" data-en="Notify me">소식 받기</button>
+        </form>
+        <p class="msg" id="msg" role="status" aria-live="polite"></p>
+      </div>
+      <div class="contact-r">
+        <b data-en="Groups, companies &amp; partners">단체·기업·제휴 문의</b>
+        <span class="muted">[문의 이메일]</span>
+        <span class="muted" data-en="KakaoTalk channel [name] · Instagram [@account]">카카오톡 채널 [채널명] · 인스타그램 [@계정]</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>SPACE 3133</b>
+    <span data-en="5 Insadong 10-gil, Jongno-gu, Seoul (Gwanhun-dong 31·33)">서울 종로구 인사동10길 5 (관훈동 31·33번지)</span>
+    <span>© 2026 SPACE 3133</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // 서명인 33석 표시 (확정 인원은 아직 0)
+  var SIGNED = 0;
+  var box = document.getElementById('signers');
+  for (var i = 0; i < 33; i++) { var c = document.createElement('i'); if (i < SIGNED) c.className = 'on'; box.appendChild(c); }
+
+  // KO / EN 전환
+  var nodes = document.querySelectorAll('[data-en]');
+  nodes.forEach(function(n){ n.dataset.ko = n.innerHTML; });
+  function setLang(lang){
+    nodes.forEach(function(n){ n.innerHTML = lang === 'en' ? n.dataset.en : n.dataset.ko; });
+    document.documentElement.lang = lang;
+    document.getElementById('lang-ko').setAttribute('aria-pressed', String(lang === 'ko'));
+    document.getElementById('lang-en').setAttribute('aria-pressed', String(lang === 'en'));
+    try { localStorage.setItem('s3133-lang', lang); } catch (e) {}
+  }
+  document.getElementById('lang-ko').addEventListener('click', function(){ setLang('ko'); });
+  document.getElementById('lang-en').addEventListener('click', function(){ setLang('en'); });
+  try { if (localStorage.getItem('s3133-lang') === 'en') setLang('en'); } catch (e) {}
+
+  // 소식 받기 — 실제 배포 시 Tally 등 수집 주소로 연결
+  var form = document.getElementById('notify'), msg = document.getElementById('msg');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var en = document.documentElement.lang === 'en';
+    var email = document.getElementById('email');
+    if (!email.value || !email.checkValidity()) {
+      msg.textContent = en ? 'Please enter a valid email address, e.g. you@example.com.' : '이메일 주소를 확인해 주세요. 예: you@example.com';
+      email.focus(); return;
+    }
+    msg.textContent = en ? 'Sign-up opens soon. We have not saved your email yet.' : '신청 접수는 곧 열립니다. 아직 이메일은 저장되지 않았습니다.';
+  });
+})();
+</script>
+</body>
+</html>
